@@ -1,50 +1,82 @@
 import random
 
 # Snake Water Gun or Rock Paper Scissors
-def gameWin(comp, you):
-    # If two values are equal, declare a tie!
-    if comp == you:
-        return None
+try:
+    def gameWin(comp, you):
+        # If two values are equal, declare a tie!
+        if comp == you:
+            return 't'
 
-    # Check for all possibilities when computer chose s
-    elif comp == 's':
-        if you=='w':
-            return False
-        elif you=='g':
-            return True
-    
-    # Check for all possibilities when computer chose w
-    elif comp == 'w':
-        if you=='g':
-            return False
-        elif you=='s':
-            return True
-    
-    # Check for all possibilities when computer chose g
-    elif comp == 'g':
-        if you=='s':
-            return False
-        elif you=='w':
-            return True
+        # Check for all possibilities when computer chose s
+        elif comp == 1:
+            if you==2:
+                return 'f'
+            elif you==3:
+                return 'w'
+        
+        # Check for all possibilities when computer chose w
+        elif comp == 2:
+            if you==3:
+                return 'f'
+            elif you==1:
+                return 'w'
+        
+        # Check for all possibilities when computer chose g
+        elif comp == 3:
+            if you==1:
+                return 'f'
+            elif you==2:
+                return 'w'
 
-print("Comp Turn: Snake(s) Water(w) or Gun(g)?")
-randNo = random.randint(1, 3) 
-if randNo == 1:
-    comp = 's'
-elif randNo == 2:
-    comp = 'w'
-elif randNo == 3:
-    comp = 'g'
+    print("Comp Turn: Computer Selected ")
+    randNo = random.randint(1, 3) 
+    if randNo == 1:
+        comp = 1
+    elif randNo == 2:
+        comp = 2
+    elif randNo == 3:
+        comp = 3
 
-you = input("Your Turn: Snake(s) Water(w) or Gun(g)?")
-a = gameWin(comp, you)
+    you = int(input("Your Turn:Select one:\n Snake(1) Water(2) or Gun(3)?"))
+    a = gameWin(comp, you)
 
-print(f"Computer chose {comp}")
-print(f"You chose {you}")
+    if comp==1 and you==1:
+        print(f"Computer chose Snake")
+        print(f"You chose Snake")
+    elif comp==1 and you==2:
+        print(f"Computer chose Snake")
+        print(f"You chose Water")
+    elif comp==1 and you==3:
+        print(f"Computer chose Snake")
+        print(f"You chose gun")
 
-if a == None:
-    print("The game is a tie!")
-elif a:
-    print("You Win!")
-else:
-    print("You Lose!")
+    if comp==2 and you==1:
+        print(f"Computer chose Water")
+        print(f"You chose Snake")
+    elif comp==2 and you==2:
+        print(f"Computer chose Water")
+        print(f"You chose Water")
+    elif comp==2 and you==3:
+        print(f"Computer chose Water")
+        print(f"You chose gun")
+
+    if comp==3 and you==1:
+        print(f"Computer chose Gun")
+        print(f"You chose Snake")
+    elif comp==3 and you==2:
+        print(f"Computer chose Gun")
+        print(f"You chose Water")
+    elif comp==3 and you==3:
+        print(f"Computer chose Gun")
+        print(f"You chose gun")
+
+    if a =='t':
+        print("The game is a tie!")
+    elif a=='w':
+        print("You Win!")
+    elif a=='f':
+        print("You Lose!")
+    else:
+        print('You enterd wrong value')
+except Exception as e:
+    print('You enterd wrong value')
